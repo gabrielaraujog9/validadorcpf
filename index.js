@@ -16,20 +16,19 @@ class ValidationCpf {
 
     let M = cpf.length + 1;
 
-    let digito =
-      11 -
-      (cpf.reduce((a, valor) => {
-        a += parseInt(valor) * M;
-        M--;
-        return a;
-      }, 0) %
-        11);
-    digito = digito > 9 ? 0 : digito;
-    cpf.push(digito);
+    let total = cpf.reduce((a, valor) => {
+      a += parseInt(valor) * M;
+      M--;
+      return a;
+    }, 0);
+    let digit = 11 - (total % 11);
+    digit = digit > 9 ? 0 : digit;
+
+    cpf.push(digit);
 
     M = cpf.length + 1;
 
-    digito =
+    digit =
       11 -
       (cpf.reduce((a, valor) => {
         a += parseInt(valor) * M;
@@ -37,9 +36,9 @@ class ValidationCpf {
         return a;
       }, 0) %
         11);
-    digito = digito > 9 ? 0 : digito;
+    digit = digit > 9 ? 0 : digit;
 
-    cpf.push(digito);
+    cpf.push(digit);
 
     return cpf.join('');
   }
@@ -52,6 +51,6 @@ class ValidationCpf {
   }
 }
 
-const v = new ValidationCpf('123.345.546-780');
+const v = new ValidationCpf('748.836.390-61');
 
 console.log(v.validation());
