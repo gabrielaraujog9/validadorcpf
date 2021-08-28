@@ -52,6 +52,6 @@ class ValidationCpf {
   }
 }
 
-const v = new ValidationCpf('123.345.546-780');
+const v = new ValidationCpf('123.345.546-78');
 
 console.log(v.validation());
